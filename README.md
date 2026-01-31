@@ -32,3 +32,23 @@ Once you've dumped the vDSO, you can inpspect it.
 ### Disassemble
 
     objdump -d vdso.so
+
+## User cases need to use vdso.so
+### perf
+When doing perf record/report the cpu cycles, perf only print the symbol address, but not symbol name. Then we need findout the symbol name 
+based on the vdso.so. For example:
+```bash
+$ perf record -e cycles -a sleep 1
+$ perf report
+```
+The output will be like:
+```
+# Samples: 1K of event 'cycles'
+#
+# Overhead  Symbol
+# ........  ......
+#
+    51.06% abc [vdso]   [.] 0x00000000589
+    0xf7ee4589
+    0
+```
