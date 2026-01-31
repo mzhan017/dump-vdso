@@ -14,9 +14,9 @@ Run `make` or just compile it directly with your C compiler, like: `cc dump-vdso
 
 ## Run
 
-The raw vDSO data is printed to `stdout`, so you probably want to redirect the output somewhere:
-    ./dump-vdso # default save to file vdso.so
-    ./dump-vdso -s # just print symbols and addresses
+The raw vDSO data is printed to file vdso.so by default. You can also print just the symbols and their addresses:
+    ./dump-vdso    // default save to file vdso.so
+    ./dump-vdso -s // just print symbols and addresses
     
 ## Inspect
 
