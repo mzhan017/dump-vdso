@@ -90,3 +90,13 @@ The output will be like:
     0xf7ee4589
     0
 ```
+# other method could be try
+ref, https://kernel-internals.org/mm/vdso/
+```
+# Extract and disassemble the vDSO
+objcopy
+ --dump-section .text=/tmp/vdso.so [vdso] /dev/null 2>/dev/null
+# Or:
+dd
+ if=/proc/self/mem bs=4096 count=1 skip=$((0x7fff12345000/4096)) > /tmp/vdso.so
+```
